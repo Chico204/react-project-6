@@ -39,10 +39,31 @@ const companies = [
 ];
 
 export default function App() {
- 
+ const [active, setActive] = useState(companies[0].id)
+ const [loading, setLoading] = useState(true)
   
-
+ useEffect(() => {
+  const timer = setTimeout(()=> setLoading(false), 1500)
+  return () => clearTimeout(timer)
+ },[])
+ if (loading){
   return (
-    <div>tabs </div>
+    <div className="flex justify-center items-center h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+    </div>
+  )
+ }
+
+const activeCompany = companies.find((c) => c.id === active)
+  return (
+    <div className="min-h-screen bg-gray-100 p-8 flex">
+      <div className="w-1/4 pr-8 ">
+        {companies.map((company)=> (
+          <button key={company.id} onClick={()=> setActive(company.id)} className={`block mb-4 text-left font-medium text-lg ${active === company.id ? "text-teal-500 border-l-4 border-teal-500 pl-2" : "text-black hover:text-teal-500"}`}>
+       {company.id}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
