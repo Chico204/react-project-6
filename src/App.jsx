@@ -32,7 +32,7 @@ const activeCompany = companies.find((c) => c.id === active)
 
       <div className="w-3/4 pl-8">
         <h1 className="text-3xl font-bold">{activeCompany.title}</h1>
-        <span className="inline-block bg-gray-400 px-4 py-1 rounded text-gray-800 mb-2">{activeCompany.company}</span>
+        <span className="inline-block bg-gray-400 mt-2 px-4 py-1 rounded text-gray-800 mb-2">{activeCompany.company}</span>
         <p className="text-gray-600 mb-6">{activeCompany.date}</p>
         <ul className="space-y-4">
           {activeCompany.bullets.map((item, i) => (
